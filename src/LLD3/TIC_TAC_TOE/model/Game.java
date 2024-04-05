@@ -23,6 +23,7 @@ public class Game {
         this.board = new Board(dimension);
         this.players = players;
         this.winningStrategies = winningStrategies;
+
     }
     public void printBoard() {
         board.printBoard();
@@ -31,8 +32,6 @@ public class Game {
     public static Builder getBuilder(){
         return new Builder();
     }
-
-
 
     public static class Builder{
         private int dimension;
