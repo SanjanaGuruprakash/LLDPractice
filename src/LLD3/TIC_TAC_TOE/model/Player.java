@@ -1,18 +1,16 @@
-package TIC_TAC_TOE;
+package LLD3.TIC_TAC_TOE.model;
 
-import java.util.*;
 public class Player {
     private char symbol;
-    private  String name;
-    private  int id;
-    private PlayerType type;
+    private String name;
+    private int Id;
+    private PlayerType playerType;
 
-
-    public Player(char symbol, String name, int id, PlayerType type) {
+    public Player(char symbol, String name, int id, PlayerType playerType) {
         this.symbol = symbol;
         this.name = name;
-        this.id = id;
-        this.type = type;
+        this.Id = id;
+        this.playerType = playerType;
     }
 
     public char getSymbol() {
@@ -32,18 +30,18 @@ public class Player {
     }
 
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        Id = id;
     }
 
-    public PlayerType getType() {
-        return type;
+    public PlayerType getPlayerType() {
+        return playerType;
     }
 
-    public void setType(PlayerType type) {
-        this.type = type;
+    public void setPlayerType(PlayerType playerType) {
+        this.playerType = playerType;
     }
 }

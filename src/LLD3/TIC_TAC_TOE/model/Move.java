@@ -1,9 +1,8 @@
-package TIC_TAC_TOE;
+package LLD3.TIC_TAC_TOE.model;
 
 public class Move {
     private Cell cell;
     private Player player;
-    private char symbol;
 
     public Move(Cell cell, Player player) {
         this.cell = cell;
@@ -24,13 +23,5 @@ public class Move {
 
     public void setPlayer(Player player) {
         this.player = player;
-    }
-
-    public char getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(char symbol) {
-        this.symbol = symbol;
     }
 }

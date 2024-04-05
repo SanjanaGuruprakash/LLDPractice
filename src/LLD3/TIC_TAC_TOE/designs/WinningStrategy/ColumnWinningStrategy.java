@@ -1,7 +1,7 @@
-package winningstrategies;
+package LLD3.TIC_TAC_TOE.designs.WinningStrategy;
 
-import TIC_TAC_TOE.Board;
-import TIC_TAC_TOE.Move;
+import LLD3.TIC_TAC_TOE.model.Board;
+import LLD3.TIC_TAC_TOE.model.Move;
 
 public class ColumnWinningStrategy implements WinningStrategy{
 
