@@ -19,6 +19,14 @@ public class Board {
             }
         }
     }
+    public void printBoard() {
+        for(List<Cell> row:board){
+            for(Cell cell: row){
+                cell.display();
+            }
+            System.out.println();
+        }
+    }
 
     public int getDimension() {
         return dimension;
@@ -35,4 +43,6 @@ public class Board {
     public void setBoard(List<List<Cell>> board) {
         this.board = board;
     }
+
+
 }

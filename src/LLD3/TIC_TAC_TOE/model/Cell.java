@@ -9,6 +9,16 @@ public class Cell {
     public Cell(int row, int col) {
         this.row = row;
         this.col = col;
+        this.cellState=CellState.EMPTY;
+    }
+
+    public void display() {
+        if(CellState.FILLED.equals(cellState)){
+            System.out.print("| "+ player.getSymbol() +" |");
+        }
+        else if(CellState.EMPTY.equals((cellState))){
+            System.out.print("| - |");
+        }
     }
 
     public CellState getCellState() {
@@ -42,6 +52,7 @@ public class Cell {
     public void setCol(int col) {
         this.col = col;
     }
+
 
 
 }

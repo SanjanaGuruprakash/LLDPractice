@@ -5,6 +5,7 @@ import LLD3.TIC_TAC_TOE.exception.DuplicateSymbolException;
 import LLD3.TIC_TAC_TOE.exception.PlayerCountMismatchException;
 import LLD3.TIC_TAC_TOE.exception.moreThanOneBotException;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -23,11 +24,15 @@ public class Game {
         this.players = players;
         this.winningStrategies = winningStrategies;
     }
-
+    public void printBoard() {
+        board.printBoard();
+    }
 
     public static Builder getBuilder(){
         return new Builder();
     }
+
+
 
     public static class Builder{
         private int dimension;
@@ -35,7 +40,24 @@ public class Game {
         private List<WinningStrategy> winningStrategies;
 
         public Builder() {
+            dimension=0;
+            winningStrategies=new ArrayList<>();
+            players=new ArrayList<>();
+        }
 
+        public Builder setDimension(int dimension) {
+            this.dimension = dimension;
+            return this;
+        }
+
+        public Builder setPlayers(List<Player> players) {
+            this.players = players;
+            return this;
+        }
+
+        public Builder setWinningStrategies(List<WinningStrategy> winningStrategies) {
+            this.winningStrategies = winningStrategies;
+            return this;
         }
 
 
