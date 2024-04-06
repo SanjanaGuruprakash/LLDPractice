@@ -12,6 +12,7 @@ import LLD3.TIC_TAC_TOE.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class AppRunner {
     public static void main(String[] args) throws moreThanOneBotException, DuplicateSymbolException, PlayerCountMismatchException {
@@ -19,6 +20,7 @@ public class AppRunner {
         int dimension = 3;
         List<Player> players = new ArrayList<>();
         List<WinningStrategy> winningStrategies = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
         players.add(new Player('X', "Sanjana",1, PlayerType.HUMAN));
         players.add(new Bot('O', "BOT", 1, PlayerType.BOT, BotDifficultyLevel.EASY));
@@ -30,6 +32,15 @@ public class AppRunner {
         Game game=gameController.startGame(dimension,players,winningStrategies);
         while (game.getGameState()==GameState.IN_PROGRESS){
             gameController.printBoard(game);
+
+            System.out.println("Would anyone like to undo? (y/n)");
+            String undo = scanner.next();
+
+            if("y".equalsIgnoreCase(undo)){
+                gameController.undo(game);
+                continue;
+            }
+
             gameController.makeMove(game);
         }
         if(game.getGameState() == GameState.COMPLETED){

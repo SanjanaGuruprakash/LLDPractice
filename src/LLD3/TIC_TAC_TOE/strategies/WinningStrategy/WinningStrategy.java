@@ -5,4 +5,6 @@ import LLD3.TIC_TAC_TOE.model.Move;
 
 public interface WinningStrategy {
     boolean checkWinner(Board board, Move move);
+
+    void undo(Board board, Move lastMove);
 }
