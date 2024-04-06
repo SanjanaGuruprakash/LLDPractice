@@ -1,10 +1,10 @@
 package LLD3.TIC_TAC_TOE;
 
 import LLD3.TIC_TAC_TOE.controller.GameController;
-import LLD3.TIC_TAC_TOE.designs.WinningStrategy.ColumnWinningStrategy;
-import LLD3.TIC_TAC_TOE.designs.WinningStrategy.DiagonalWinningStrategy;
-import LLD3.TIC_TAC_TOE.designs.WinningStrategy.RowWinningStrategy;
-import LLD3.TIC_TAC_TOE.designs.WinningStrategy.WinningStrategy;
+import LLD3.TIC_TAC_TOE.strategies.WinningStrategy.ColumnWinningStrategy;
+import LLD3.TIC_TAC_TOE.strategies.WinningStrategy.DiagonalWinningStrategy;
+import LLD3.TIC_TAC_TOE.strategies.WinningStrategy.RowWinningStrategy;
+import LLD3.TIC_TAC_TOE.strategies.WinningStrategy.WinningStrategy;
 import LLD3.TIC_TAC_TOE.exception.DuplicateSymbolException;
 import LLD3.TIC_TAC_TOE.exception.PlayerCountMismatchException;
 import LLD3.TIC_TAC_TOE.exception.moreThanOneBotException;
@@ -28,7 +28,24 @@ public class AppRunner {
         winningStrategies.add(new DiagonalWinningStrategy());
 
         Game game=gameController.startGame(dimension,players,winningStrategies);
-        gameController.printBoard(game);
+        while (game.getGameState()==GameState.IN_PROGRESS){
+            gameController.printBoard(game);
+            gameController.makeMove(game);
+        }
+        if(game.getGameState() == GameState.COMPLETED){
+            System.out.println(game.getWinningPlayer().getName() + " Congrats you won the game");
+            game.printBoard();
+        }
+        if(game.getGameState() == GameState.DRAW){
+            System.out.println("Its a draw");
+            game.printBoard();
+        }
+
+
+
+
+
+
 
     }
 }

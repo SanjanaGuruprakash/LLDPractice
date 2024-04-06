@@ -1,4 +1,4 @@
-package LLD3.TIC_TAC_TOE.designs.WinningStrategy;
+package LLD3.TIC_TAC_TOE.strategies.WinningStrategy;
 
 import LLD3.TIC_TAC_TOE.model.Board;
 import LLD3.TIC_TAC_TOE.model.Move;

@@ -1,6 +1,6 @@
 package LLD3.TIC_TAC_TOE.controller;
 
-import LLD3.TIC_TAC_TOE.designs.WinningStrategy.WinningStrategy;
+import LLD3.TIC_TAC_TOE.strategies.WinningStrategy.WinningStrategy;
 import LLD3.TIC_TAC_TOE.exception.DuplicateSymbolException;
 import LLD3.TIC_TAC_TOE.exception.PlayerCountMismatchException;
 import LLD3.TIC_TAC_TOE.exception.moreThanOneBotException;
@@ -18,7 +18,13 @@ public class GameController {
                 .build();
     }
     public void printBoard(Game game){
+
         game.printBoard();
+    }
+
+    public void makeMove(Game game){
+        game.makeMove();
+
     }
 
 }

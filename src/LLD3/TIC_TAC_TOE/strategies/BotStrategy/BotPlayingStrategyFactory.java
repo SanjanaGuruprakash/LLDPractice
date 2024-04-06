@@ -1,4 +1,4 @@
-package LLD3.TIC_TAC_TOE.designs.BotStrategy;
+package LLD3.TIC_TAC_TOE.strategies.BotStrategy;
 
 import LLD3.TIC_TAC_TOE.model.BotDifficultyLevel;
 

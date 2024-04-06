@@ -1,6 +1,6 @@
 package LLD3.TIC_TAC_TOE.model;
 
-import LLD3.TIC_TAC_TOE.designs.WinningStrategy.WinningStrategy;
+import LLD3.TIC_TAC_TOE.strategies.WinningStrategy.WinningStrategy;
 import LLD3.TIC_TAC_TOE.exception.DuplicateSymbolException;
 import LLD3.TIC_TAC_TOE.exception.PlayerCountMismatchException;
 import LLD3.TIC_TAC_TOE.exception.moreThanOneBotException;
@@ -23,6 +23,9 @@ public class Game {
         this.board = new Board(dimension);
         this.players = players;
         this.winningStrategies = winningStrategies;
+        this.nextPlayerIndex=0;
+        this.gameState=GameState.IN_PROGRESS;
+        moves=new ArrayList<>();
 
     }
     public void printBoard() {
@@ -31,6 +34,37 @@ public class Game {
 
     public static Builder getBuilder(){
         return new Builder();
+    }
+
+    public void makeMove() {
+        Player player = players.get(nextPlayerIndex);
+        Cell cell= player.makeMove(board);
+
+        Move move = new Move(cell,player);
+        moves.add(move);
+
+        if(checkWinner(move, board)){
+            gameState=GameState.COMPLETED;
+            winningPlayer =player;
+            return;
+        }
+        if(moves.size()==board.getDimension()*board.getDimension()){
+            gameState=GameState.DRAW;
+            return;
+        }
+
+        nextPlayerIndex++;
+        nextPlayerIndex = nextPlayerIndex % players.size();
+
+    }
+
+    private boolean checkWinner(Move move, Board board) {
+        for(WinningStrategy ws: winningStrategies){
+            if(ws.checkWinner(board, move)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static class Builder{
@@ -160,4 +194,6 @@ public class Game {
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
+
+
 }
